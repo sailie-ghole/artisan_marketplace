@@ -1,0 +1,111 @@
+/* Profile list */
+html, body{
+    overflow-x: hidden;
+}
+
+.page-content{
+    width: 1000px;
+}
+
+.page-table{
+    width: 1000px;
+    
+    padding-left: 200px;
+}
+
+.tablet{
+    padding-top: 100px; 
+    
+}
+
+.map{
+    padding-top: 100px; 
+    padding-left: 20px;
+}
+
+#map {
+    width: 1080px;
+    padding: 20px;
+}
+
+.faculty-list{
+    padding-top: 150px;
+}
+.faculty-list img{
+    max-height: 220px;
+    width: 200px;
+    margin: 2%;
+}
+
+.faculty-list .card{
+    width: 1000px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15), 
+    0 2px 2px rgba(0,0,0,0.15), 
+    0 4px 4px rgba(0,0,0,0.15), 
+    0 8px 8px rgba(0,0,0,0.15);
+}
+
+.faculty-list .card-body{
+    margin-top: 5%;
+}
+
+.faculty-list .card:hover{
+    -moz-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -o-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+
+    -webkit-transition: transform 0.3s ease-in-out;
+    -moz-transition: transform 0.3s ease-in-out;
+    -ms-transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+
+
+.B-yellow{ background-color: #f5a425;}
+.B-grey{background-color: rgb(151, 164, 208);}
+.B-blue{ background-color: #032539;}
+
+.T-white{ color: white; }
+.T-yellow{ color: #f5a425;}
+.T-blue{ color: #032539;}
+.T-light-blue{ color: #034266;}
+
+.small-text{ font-size: 15px; }
+
+
+
+/* Profile page */
+.profile-card{
+    box-shadow: 0 7px 15px 0 rgba(0, 0, 0, .13), 0 1px 4px 0 rgba(0, 0, 0, .11);
+}
+
+#main-profile-image{
+    margin: 14px;
+    height: 250px;
+    width: 250px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    text-align: center;
+}
+
+.detail-icons{
+    width: 50px;
+}
+
+.enlarge:hover{
+    transform: scale(1.1,1.1);
+    transition: transform 0.3s ease-out;
+}
+
+/* For text wrapping in pre tag */
+.professor-profile pre{
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}

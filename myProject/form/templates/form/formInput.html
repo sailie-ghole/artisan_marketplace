@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("TuTz9Z9Aglfnl8eS3");
+    })();
+    </script>
+
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+<link href="{% static 'vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">    
+<link rel="stylesheet" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
+    
+
+
+
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+
+<link href="{% static 'vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+
+<script src="{% static 'vendor/chart.js/Chart.js' %}"></script>
+<script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+
+<script src="{% static 'js/index.js' %}"></script>
+
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">    
+<link rel="stylesheet" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
+    {% block stylesheet %}{% endblock %}
+
+    <style>
+        /* Red text color for invalid OTP */
+        .invalid-text {
+            color: red;
+        }
+
+        /* Green text color for valid OTP */
+        .valid-text {
+            color: green;
+        }
+    </style>    
+</head>
+
+
+
+<body id="page-top" style="background-color:">
+
+<!-- headers-->
+<nav class="navbar navbar-expand navbar-dark fixed-top" style="background-color: white">
+        <a class="navbar-brand mr-1 text-primary" href="#">
+        <img src="{% static "images/logo.png" %}"  height="70" alt="MotechApp">
+      </a>
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- Navbar Search -->
+<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" action="" method="GET">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    
+
+
+
+</nav>
+
+
+<div id="wrapper" style="padding-top: 13px;">
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav" style="padding-top: 90px; height: 1000px; width: 700px">
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">
+                <i class="" aria-hidden="true"></i>
+                <span style="color: white">Home</span>
+            </a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'formInput' %}">
+                <i class="" aria-hidden="true"></i>
+                <span style="color: skyblue">Add your Artwork</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'map' %}">
+                <i class="" aria-hidden="true"></i>
+                <span style="color: white">Add your location</span>
+            </a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'showData' %}">
+                <i class=""></i>
+                <span style="color: white">Show Artworks</span>
+            </a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'displayData' %}">
+                <i class="" aria-hidden="true"></i>
+                <span style="color: white">Buy Artwork</span>
+            </a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'displayDatat' %}">
+                <i class=""></i>
+                <span style="color: white">Download PDF</span>
+            </a>
+        </li>
+    
+    
+        <li class="nav-item ">
+            <a class="nav-link" href="{% url 'studentsView' %}">
+                <i class="" aria-hidden="true"></i>
+                <span style="color: white">Dashboard</span>
+            </a>
+        </li>
+         
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">
+                    <i class="" aria-hidden="true"></i>
+                    <span style="color: white">References</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown" style="width: 210px">
+                <a class="dropdown-item" href="{% url 'displayData' %}" class="btn btn-outline-primary">About Artisan</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'displayDatat' %}" class="btn btn-outline-primary">Art Blogs</a>
+            </div>
+        </li>
+    
+    </ul> 
+    
+    
+   
+    <!-- MultiStep Form -->
+    <div class="container-fluid " id="grad1">
+        <div class="row justify-content-center mt-20">
+            <div class="col-11 col-sm-9 col-md-10 col-lg-10 text-center p-0 mt-3 mb-2">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                    <h2><strong>Add Artwork</strong></h2>
+                    <p>Fill all form field to go to next step</p>
+                    <div class="row">
+                        <div class="col-md-12 mx-0">
+                            <form id="msform" action="{% url 'addData' %}" enctype="multipart/form-data" method="POST">
+                                {% csrf_token %}
+                                <!-- progressbar -->
+                                <ul id="progressbar">
+                                    <li class="active" id="account"><strong>Registration</strong></li>
+                                    <li id="personal"><strong>Personal details</strong></li>
+                                    <li id="payment"><strong>Artwork Details</strong></li>
+                                    <li id="confirm"><strong>Location</strong></li>
+                                </ul>
+                                <!-- fieldsets -->
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Registration</h2>
+                                        <input type="email" name="email" placeholder="Email" />
+                                        <input type="text" name="otpEntered" id="otpEntered" placeholder="Email OTP" />
+                                        <p id="result"></p>
+                                        <!-- GET OTP button -->
+                                        <input type="button" class="btn btn-primary" style="background-color: skyblue" id="generateButton" value="GET OTP" />
+                                        <!-- SUBMIT OTP button -->
+                                        <input type="button" class="btn btn-primary" style="background-color: skyblue" id="submitOTP" value="SUBMIT OTP" />
+                                        <!-- <input type="text" name="uname" placeholder="UserName" />
+                                        <input type="password" name="pwd" placeholder="Password" />
+                                        <input type="password" name="cpwd" placeholder="Confirm Password" /> -->
+                                    </div>
+                                    <input type="button" name="next" class="next action-button" value="Next Step" />
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Personal details</h2>
+                                        <input type="text" name="fname" placeholder="First Name" />
+                                        <input type="text" name="lname" placeholder="Last Name" />
+                                        <input type="text" name="gender" placeholder="Gender" />
+                                        <input type="number" name="phone" placeholder="Mobile no." />
+                                        <input type="text" name="url" placeholder="Your Portfolio Website">
+
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                        value="Previous" />
+                                    <input type="button" name="next" class="next action-button" value="Next Step" />
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Artwork Deatils</h2>
+                                        <input type="text" name="medium" placeholder="Artistic Medium" />
+                                        <input type="text" name="title" placeholder="Title of your Artwork" />
+                                        <input type="text" name="bio" maxlength="150" placeholder="Description about your artwork" />
+                                        <input type="number" name="price" placeholder="Price of your Artwork [INR]" />
+                                        <input type="file" name="image" placeholder="Upload your artwork" />
+
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                        value="Previous" />
+                                    <input type="button" name="next" class="next action-button" value="Next Step" />
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h2 class="fs-title">Location</h2>
+                                        <input type="text" name="location" placeholder="Add your location" />
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                        value="Previous" />
+                                </fieldset>
+                                <div class="mt-2">
+                                    <button class="btn btn-primary" style="background-color: grey" type="submit">Finish</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-white text-center py-3" style="background-color:#6ca6cd">
+    <div class="container">
+        <p>&copy; 2023 Sailie Ghole WIM</p>
+    </div>
+  </footer>
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+    <script>
+        $(document).ready(function () {
+
+            var current_fs, next_fs, previous_fs; //fieldsets
+            var opacity;
+
+            $(".next").click(function () {
+
+                current_fs = $(this).parent();
+                next_fs = $(this).parent().next();
+
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+                //show the next fieldset
+                next_fs.show();
+                //hide the current fieldset with style
+                current_fs.animate({ opacity: 0 }, {
+                    step: function (now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({ 'opacity': opacity });
+                    },
+                    duration: 600
+                });
+            });
+
+            $(".previous").click(function () {
+
+                current_fs = $(this).parent();
+                previous_fs = $(this).parent().prev();
+
+                //Remove class active
+                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+                //show the previous fieldset
+                previous_fs.show();
+
+                //hide the current fieldset with style
+                current_fs.animate({ opacity: 0 }, {
+                    step: function (now) {
+                        // for making fielset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        previous_fs.css({ 'opacity': opacity });
+                    },
+                    duration: 600
+                });
+            });
+
+            $('.radio-group .radio').click(function () {
+                $(this).parent().find('.radio').removeClass('selected');
+                $(this).addClass('selected');
+            });
+
+            $(".submit").click(function () {
+                return false;
+            })
+
+        });
+    </script>
+
+
+</body>
+
+</html>

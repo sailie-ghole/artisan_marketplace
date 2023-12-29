@@ -1,0 +1,244 @@
+{% extends 'form/base_officer.html' %}
+{% load static %}
+
+{% block body %}
+ <div id="content-wrapper" style="padding-top: 105px">
+        
+        <div class="container-fluid">
+            
+                <nav>
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                
+                <li class="breadcrumb-item active">
+                    <a href="{% url 'studentsView' %}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{% url 'map_location' %}">Maps</a>
+                </li>
+            </ol>
+        </nav>
+    
+
+
+            <div class="pagetitle">
+                <h1>Dashboard</h1>
+            </div>
+              <div class="row">
+                  <div class="col-xxl-4 col-xl-12">
+
+                    <div class="card info-card customers-card">
+      
+                      <div class="filter">
+                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                          <li class="dropdown-header text-start">
+                            <h6>Filter</h6>
+                          </li>
+      
+                          <li><a class="dropdown-item" href="#">Today</a></li>
+                          <li><a class="dropdown-item" href="#">This Month</a></li>
+                          <li><a class="dropdown-item" href="#">This Year</a></li>
+                        </ul>
+                      </div>
+      
+                      <div class="card-body">
+                        <h5 class="card-title">Total <span>| Artworks</span></h5>
+      
+                        <div class="d-flex align-items-center">
+                          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-people"></i>
+                          </div>
+                          <div class="ps-3">
+                            <h1>{{ total_artworks }}</h1>
+                            {% comment %} <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span> {% endcomment %}
+      
+                          </div>
+                        </div>
+      
+                      </div>
+                    </div>
+      
+                  </div>
+              </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Chart of Male and Female Artists</h5>
+          
+                        <!-- Line Chart -->
+                        <canvas id="myChart1" style="max-height: 400px; display: block; box-sizing: border-box; height: 149px; width: 298px;" width="596" height="298"></canvas>
+                            <script type="text/javascript">
+                            var ctx = document.getElementById('myChart1').getContext('2d');
+                            var myChart1 = new Chart(ctx, {
+                                type: 'pie',
+                                data: {
+                                    labels: [{% for gender in gender_list %} '{{ gender }}', {% endfor %}],
+                                    datasets: [{
+                                        label:'Gender',
+                                        data: [{% for number in gender_number %} '{{ number }}', {% endfor %}],
+                                        backgroundColor: [
+                                        'rgb(54, 162, 235)',
+                                        'rgb(255, 205, 86)',
+                                      ],
+                                      hoverOffset: 4
+                                    }]
+                                },
+
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                    }
+                                }
+                            })
+                            </script>  
+                        <!-- End Line CHart -->
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="col-lg-6">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Chart for Artwork Medium-wise</h5>
+          
+                        <!-- Line Chart -->
+                        <canvas id="myChart" style="max-height: 400px; display: block; box-sizing: border-box; height: 149px; width: 298px;" width="596" height="298"></canvas>
+                            <script type="text/javascript">
+                            var ctx = document.getElementById('myChart').getContext('2d');
+                            var myChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: [{% for artwork in artwork_list %} '{{ artwork }}', {% endfor %}],
+                                    datasets: [{
+                                        label:'Artwork',
+                                        data: [{% for number in number_list %} '{{ number }}', {% endfor %}],
+                                        
+                                        backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)',
+                                        'rgba(255, 205, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(201, 203, 207, 0.2)'
+                                        ],
+                                        borderColor: [
+                                        'rgb(255, 99, 132)',
+                                        'rgb(255, 159, 64)',
+                                        'rgb(255, 205, 86)',
+                                        'rgb(75, 192, 192)',
+                                        'rgb(54, 162, 235)',
+                                        'rgb(153, 102, 255)',
+                                        'rgb(201, 203, 207)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            }
+                                        }]
+                                    }
+                                }
+                            })
+                        </script> 
+                        <!-- End Line CHart -->
+          
+                      </div>
+                    </div>
+                  </div>
+
+                  
+                  
+                
+
+
+                
+
+            
+    
+
+
+            </div>
+        </div>
+            <br>
+            <br>
+            <br>
+
+            
+            <!-- Icon Cards-->
+            {% comment %} backgroundColor:[
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 135, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(151, 102, 132, 1)',
+                                        'rgba(153, 99, 132, 1)',
+                                        'rgba(255, 159, 64, 1)',
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 135, 1)',
+                                        'rgba(25, 206, 86, 1)',
+                                        'rgba(211, 192, 192, 1)',
+                                        'rgba(234, 102, 132, 1)',
+                                        'rgba(153, 99, 132, 1)',
+                                        'rgba(255, 159, 64, 1)',
+                                        'gree',
+                                        'yellow',
+                                        ],
+
+                                        borderColor: [
+                                        'rgba(54, 162, 135, 1)',
+                                        'rgba(25, 206, 86, 1)',
+                                        'rgba(211, 192, 192, 1)',
+                                        'rgba(234, 102, 132, 1)',
+                                        'rgba(153, 99, 132, 1)',
+                                        'rgba(255, 159, 64, 1)',
+
+                                        ],
+
+                                        borderWidth: 1 {% endcomment %}
+
+
+                                        {% comment %} <script>
+                                            document.addEventListener("DOMContentLoaded", () => {
+                                              new Chart(document.querySelector('#pieChart'), {
+                                                type: 'pie',
+                                                data: {
+                                                  labels: [
+                                                    'Red',
+                                                    'Blue',
+                                                    'Yellow'
+                                                  ],
+                                                  datasets: [{
+                                                    label: 'My First Dataset',
+                                                    data: [300, 50, 100],
+                                                    backgroundColor: [
+                                                      'rgb(255, 99, 132)',
+                                                      'rgb(54, 162, 235)',
+                                                      'rgb(255, 205, 86)'
+                                                    ],
+                                                    hoverOffset: 4
+                                                  }]
+                                                }
+                                              });
+                                            });
+                                          </script> {% endcomment %}
+
+
+<!-- end of static icon -->           
+        </div>
+    </div>
+</div>
+
+{% endblock %}
