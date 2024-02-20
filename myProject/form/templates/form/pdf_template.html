@@ -1,0 +1,71 @@
+{% load static %}
+<head>
+    <style>
+        @page {
+            size: a4 portrait;
+            @frame header_frame {           /* Static Frame */
+                -pdf-frame-content: header_content;
+                left: 50pt; width: 512pt; top: 50pt; height: 40pt;
+            }
+            @frame content_frame {          /* Content Frame */
+                left: 50pt; width: 512pt; top: 90pt; height: 632pt;
+            }
+            @frame footer_frame {           /* Another static Frame */
+                -pdf-frame-content: footer_content;
+                left: 50pt; width: 512pt; top: 772pt; height: 20pt;
+            }
+        }
+        html{
+            background-color: rgb(230, 240, 237);
+        }
+
+        td{
+            background-color: rgb(234, 248, 243);
+            color: rgb(1, 13, 113);
+            text-align: center;
+        }
+
+    </style>
+    </head>
+
+    
+    
+    <body>
+
+        <!-- Content for Static Frame 'header_frame' -->
+        <div id="header_content">
+            <h2 style="text-align: center; padding-top: 5px;">Artwork by {{fname}} {{lname}}</h2>
+        </div>
+
+
+        <img src="" style="text-align: center;" height="100px" width="300px" alt="">
+    
+        <!-- HTML Content -->   
+        <hr>
+    
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Medium</th>
+                <th>Price</th>
+                <th>Contact</th>
+
+            </tr>
+            <tr>
+                <td>
+                    {{title}} 
+                </td>
+                <td>{{medium}}</td>
+                <td>{{price}}</td>
+                <td>{{email}}, {{phone}}</td>
+                
+            </tr>
+        </table>
+    
+        <hr>
+        <p><strong>Bio: {{bio}}</strong></p>
+        <div>
+            <img src="{{ image }}" alt="...">
+        </div>
+    </body>
+    </html>

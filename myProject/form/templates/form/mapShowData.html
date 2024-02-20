@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include Leaflet CSS and JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- Add styles for the map container -->
+    <style>
+        #map {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Create a map container -->
+    <div id="map"></div>
+    
+    <script>
+        // Initialize the map
+        document.addEventListener("DOMContentLoaded", function() {
+        var map = L.map('map').setView([19.0760, 72.8777], 13); // Set initial coordinates and zoom level
+
+        // Add a tile layer (you can replace this with your own map provider)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        // Loop through the locations and add markers to the map
+        {% for location in all_locations %}
+            L.marker([{{ location.latitude }}, {{ location.longitude }}]).addTo(map)
+                .bindPopup("{{ location.markerTitle }}");
+        {% endfor %}
+    });
+    </script>
+</body>
+</html>
